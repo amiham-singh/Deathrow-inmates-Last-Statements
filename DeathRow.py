@@ -1,7 +1,6 @@
 
 from bs4 import BeautifulSoup
 import requests
-
 import re
 
 statements = []
@@ -46,21 +45,17 @@ for link in links:
 
 
 
-#%%
+#The NLP PART of this Project
 
 import nltk
 from nltk import FreqDist
-from	nltk.corpus	import	PlaintextCorpusReader
-mycorpus	=	PlaintextCorpusReader('.',	'.*\.txt')
-laststate	=	mycorpus.raw('Statements.txt')
 
-file_content = open("myfile.txt").read()
 tokens = nltk.word_tokenize(file_content)
 stopwords = nltk.corpus.stopwords.words('english')
 stopwords.append("it's")
 stopwords.append("he's")
 stopwords.append("she's")
-#%%
+
 Ltokens = [x.lower() for x in tokens]
 alpha=	[w	for	w	in	Ltokens	if	w.isalpha()]
 words = [x for x in alpha if x not in stopwords]
